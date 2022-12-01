@@ -48,3 +48,13 @@ Show arbitrage lines:
 
 ```sh
 python -m app.bestbets
+```
+
+
+### Email Sending
+
+Run the email service to send an example email and see if everything is working:
+
+```sh
+python -m app.bestbets_email
+```
