@@ -1,9 +1,17 @@
 # this is the "app/betterbets.py" file
 
+import os
 import requests
 import json
 
-from app.alpa import API_KEY
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+# from app.alpa import API_KEY
+
+API_KEY = os.getenv("ODDS_API_KEY")
 
 
 
