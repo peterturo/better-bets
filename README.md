@@ -38,8 +38,13 @@ SENDGRID_API_KEY="__________"
 
 ## Usage
 
-Run the unemployment report:
+Show a full betting slate:
 
 ```sh
-python -m app.betterbets
+python -m app.bets
 ```
+
+Show arbitrage lines:
+
+```sh
+python -m app.bestbets
