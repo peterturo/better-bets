@@ -41,7 +41,7 @@ SENDGRID_API_KEY="__________"
 Show a full betting slate:
 
 ```sh
-python -m app.bets
+python -m app.odds
 ```
 
 Show arbitrage lines:

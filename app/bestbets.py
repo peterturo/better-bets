@@ -16,9 +16,9 @@ def Convert(a):
 
 
 
-def generate_arbitrage(SPORT_KEY = "americanfootball_nfl"):
+def generate_arbitrage(SPORT_KEY = "upcoming"):
 
-    print(f"GENERATING ARBITRAGE FOR {SPORT_KEY.upper()}...")
+    print(f"GENERATING {SPORT_KEY.upper()} ARBITRAGE BETS ...")
     print("-----------")
 
     request_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?regions=us&markets=spreads&oddsFormat=american&apiKey={API_KEY}"
@@ -113,7 +113,7 @@ def generate_arbitrage(SPORT_KEY = "americanfootball_nfl"):
 
         
         
-        print(f"{away_team} @ {home_team}")
+        print(f"{sport_title}: {away_team} @ {home_team}")
         print("")
 
         print("BEST BETS:")
@@ -163,5 +163,3 @@ def generate_arbitrage(SPORT_KEY = "americanfootball_nfl"):
 
     
 generate_arbitrage()
-
-    #pprint(data)
