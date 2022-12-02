@@ -14,7 +14,7 @@ def plus_sign(number):
         return(number)
 
 
-def generate_odds(SPORT_KEY = "americanfootball_nfl"):
+def generate_odds(SPORT_KEY = "upcoming"):
 
     WAGER_TYPE = (input("Please enter a type of wager (spreads, h2h, totals): "))
 
@@ -22,12 +22,11 @@ def generate_odds(SPORT_KEY = "americanfootball_nfl"):
     print("-----------")
 
     request_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?regions=us&markets={WAGER_TYPE}&oddsFormat=american&apiKey={API_KEY}&bookmakers=bovada"
+
     response = requests.get(request_url)
 
     data = json.loads(response.text)
 
-    #print(type(data))
-    #pprint(data)
 
     for d in data:
         away_team = d["away_team"]
@@ -82,5 +81,6 @@ def generate_odds(SPORT_KEY = "americanfootball_nfl"):
                 
                 print(f"SPORTSBOOK: {b['title']}")    
                 print("-----------")
+
 
 generate_odds()

@@ -1,10 +1,9 @@
-# this is the "app/betterbets.py" file
+# this is the "app/bestbets.py" file
 
 import requests
 import json
 
 from app.alpha import API_KEY
-
 
 def Convert(a):
     it = iter(a)
@@ -19,7 +18,7 @@ def plus_sign(number):
     if number > 0:
         return(f"+{number}")
     elif number == 0:
-        return("EVEN")
+        return("PICK")
     else:
         return(number)
 
@@ -35,20 +34,13 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
 
     data = json.loads(response.text)
 
-    #print(type(data))
-    #pprint(data)
-
+    
     for d in data:
         away_team = d["away_team"]
         home_team = d["home_team"]
         bookmakers = d["bookmakers"]
         sport_title = d["sport_title"]
        
-        #print(f"{away_team} @ {home_team}")
-        #print(f"DATE: {d['commence_time'][11:19]}, {d['commence_time'][0:10]}")
-
-        #markets = [b for b in bookmakers]
-
         a_spreads = []
         h_spreads = []
 
