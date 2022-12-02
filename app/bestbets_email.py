@@ -1,12 +1,8 @@
-
-from app.bestbets import generate_arbitrage
 from app.email_service import send_email
 
 if __name__ == "__main__":
 
     print("ARBITRAGE EMAIL...")
-
-    data = generate_arbitrage()
 
 
     # keeping the email content simple for example purposes, but
@@ -17,7 +13,7 @@ if __name__ == "__main__":
 
     html_content = f"""
         <h3>Arbitrage Bets</h3>
-        <p>{generate_arbitrage()} </p>
+        <p> </p>
     """
 
 

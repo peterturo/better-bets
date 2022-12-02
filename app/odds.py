@@ -1,10 +1,17 @@
-# this is the "app/betterbets.py" file
+# this is the "app/odds.py" file
 
 import requests
 import json
 
 from app.alpha import API_KEY
 
+def plus_sign(number):
+    if number > 0:
+        return(f"+{number}")
+    elif number == 0:
+        return("EVEN")
+    else:
+        return(number)
 
 
 def generate_odds(SPORT_KEY = "americanfootball_nfl"):
@@ -51,11 +58,7 @@ def generate_odds(SPORT_KEY = "americanfootball_nfl"):
 
                      
                     
-                    if away_spread > home_spread:
-                        print(f"{sport_title}: {away_team} (+{away_spread}, {away_price}) @ {home_team} ({home_spread}, {home_price})")
-        
-                    else:
-                        print(f"{sport_title}: {away_team} ({away_spread}, {away_price}) @ {home_team} (+{home_spread}, {home_price})")
+                    print(f"{sport_title}: {away_team} ({plus_sign(away_spread)}, {plus_sign(away_price)}) @ {home_team} ({plus_sign(home_spread)}, {plus_sign(home_price)})")
 
 
 
@@ -73,11 +76,7 @@ def generate_odds(SPORT_KEY = "americanfootball_nfl"):
                     away_ml = away_mls[0]
                     home_ml = home_mls[0]
 
-                    if away_ml > home_ml:
-                        print(f"{sport_title}: {away_team} (+{away_ml}) @ {home_team} ({home_ml})")
-        
-                    else:
-                        print(f"{sport_title}: {away_team} ({away_ml}) @ {home_team} (+{home_ml})")
+                    print(f"{sport_title}: {away_team} ({plus_sign(away_ml)}) @ {home_team} ({plus_sign(home_ml)})")
 
 
                 

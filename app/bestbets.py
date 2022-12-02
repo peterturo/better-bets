@@ -61,11 +61,6 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
             for m in markets:
                 odds = m["outcomes"]
 
-                #for o in odds:
-                    #print(f"{o['name']}: {o['point']}")
-                    #print(f"{o['name'][1]}: {o['price'][1]}")
-                    #print(m["outcomes"])
-
                 away_spreads = [p["point"] for p in odds if p["name"] == away_team]
                 home_spreads = [p["point"] for p in odds if p["name"] == home_team]
                 away_spread = away_spreads[0]
@@ -92,35 +87,37 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
                 h_prices.append(b["title"])
                 h_prices.append(home_price)
                 
-
-        
         
         
         a_spreads_dict = (Convert(a_spreads))
         h_spreads_dict = (Convert(h_spreads))
-
         
         a_prices_dict = (Convert(a_prices))
         h_prices_dict = (Convert(h_prices))
 
         
-        
-        best_away_book = (max(a_spreads_dict, key=a_spreads_dict.get))
-        best_home_book = (max(h_spreads_dict, key=h_spreads_dict.get))
-        # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary
+
+        try:
+
+            best_away_book = (max(a_spreads_dict, key=a_spreads_dict.get))
+            best_home_book = (max(h_spreads_dict, key=h_spreads_dict.get))
+            # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary
         
 
         
-        print(f"{sport_title}: {away_team} @ {home_team}")
-        print("")
+            print(f"{sport_title}: {away_team} @ {home_team}")
+            print("")
 
-        print("BEST BETS:")
+            print("BEST BETS:")
        
-        print(f"{away_team}: {best_away_book} ({plus_sign(a_spreads_dict[best_away_book])}, {plus_sign(a_prices_dict[best_away_book])})")
-        print(f"{home_team}: {best_home_book} ({plus_sign(h_spreads_dict[best_home_book])}, {plus_sign(h_prices_dict[best_home_book])})")
+            print(f"{away_team}: {best_away_book} ({plus_sign(a_spreads_dict[best_away_book])}, {plus_sign(a_prices_dict[best_away_book])})")
+            print(f"{home_team}: {best_home_book} ({plus_sign(h_spreads_dict[best_home_book])}, {plus_sign(h_prices_dict[best_home_book])})")
 
 
-        print("-----------")
+            print("-----------")
+
+        except:
+            break
 
     
 generate_arbitrage()
