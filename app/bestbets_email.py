@@ -6,6 +6,8 @@ if __name__ == "__main__":
 
     print("ARBITRAGE EMAIL...")
 
+    data = generate_arbitrage()
+
 
     # keeping the email content simple for example purposes, but
     # ... for an example of attaching the data as a CSV file
@@ -14,8 +16,8 @@ if __name__ == "__main__":
     # ... (you might need to create a more complex email sending function)
 
     html_content = f"""
-        <h1>Arbitrage Bets Email</h1>
-        <p>({generate_arbitrage}) </p>
+        <h3>Arbitrage Bets</h3>
+        <p>{generate_arbitrage()} </p>
     """
 
 

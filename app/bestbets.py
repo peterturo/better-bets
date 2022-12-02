@@ -15,7 +15,6 @@ def Convert(a):
 # from: https://www.geeksforgeeks.org/python-convert-a-list-to-dictionary/
 
 
-
 def generate_arbitrage(SPORT_KEY = "upcoming"):
 
     print(f"GENERATING {SPORT_KEY.upper()} ARBITRAGE BETS ...")
@@ -123,7 +122,7 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
             if a_prices_dict[best_away_book] > 0:
                 print(f"{away_team}: {best_away_book} (+{a_spreads_dict[best_away_book]}, +{a_prices_dict[best_away_book]})")
             else:
-                print(f"{away_team}: {best_away_book} (+{a_spreads_dict[best_away_book]}, {a_prices_dict[best_away_book]})")
+                (print(f"{away_team}: {best_away_book} (+{a_spreads_dict[best_away_book]}, {a_prices_dict[best_away_book]})"))
         
         
         elif a_spreads_dict[best_away_book] == 0:
@@ -160,6 +159,7 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
         
         
         print("-----------")
+        print(empty_list)
 
     
 generate_arbitrage()
