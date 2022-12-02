@@ -15,6 +15,15 @@ def Convert(a):
 # from: https://www.geeksforgeeks.org/python-convert-a-list-to-dictionary/
 
 
+def plus_sign(number):
+    if number > 0:
+        return(f"+{number}")
+    elif number == 0:
+        return("EVEN")
+    else:
+        return(number)
+
+
 
 def generate_arbitrage(SPORT_KEY = "upcoming"):
 
@@ -84,8 +93,8 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
                 h_prices.append(home_price)
                 
 
-        #sorted_books = sorted(odds, key=itemgetter("point"), reverse=True)
-        #print(sorted_books)
+        
+        
         
         a_spreads_dict = (Convert(a_spreads))
         h_spreads_dict = (Convert(h_spreads))
@@ -94,16 +103,6 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
         a_prices_dict = (Convert(a_prices))
         h_prices_dict = (Convert(h_prices))
 
-
-
-        #sorted_away_odds = dict(sorted(a_odds_dict.items(), key=itemgetter(1)))
-        #sorted_home_odds = dict(sorted(h_odds_dict.items(), key=itemgetter(1)))
-        # from: https://www.askpython.com/python/dictionary/sort-a-dictionary-by-value-in-python#:~:text=itemgetter()%20method%20can%20be,m'%20values%20from%20the%20iterable.
-
-        #print(sorted_away_odds)
-        #print(sorted_home_odds)
-
-        
         
         
         best_away_book = (max(a_spreads_dict, key=a_spreads_dict.get))
@@ -112,53 +111,15 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
         
 
         
-        
         print(f"{sport_title}: {away_team} @ {home_team}")
         print("")
 
         print("BEST BETS:")
        
-        
-        if a_spreads_dict[best_away_book] > 0:
-            if a_prices_dict[best_away_book] > 0:
-                print(f"{away_team}: {best_away_book} (+{a_spreads_dict[best_away_book]}, +{a_prices_dict[best_away_book]})")
-            else:
-                print(f"{away_team}: {best_away_book} (+{a_spreads_dict[best_away_book]}, {a_prices_dict[best_away_book]})")
-        
-        
-        elif a_spreads_dict[best_away_book] == 0:
-            if a_prices_dict[best_away_book] > 0:
-                print(f"{away_team}: {best_away_book} (PICK, +{a_prices_dict[best_away_book]})")
-            else:
-                print(f"{away_team}: {best_away_book} (PICK, {a_prices_dict[best_away_book]})")
-        
-        else:
-            if a_prices_dict[best_away_book] > 0:
-                print(f"{away_team}: {best_away_book} ({a_spreads_dict[best_away_book]}, +{a_prices_dict[best_away_book]})")
-            else:
-                print(f"{away_team}: {best_away_book} ({a_spreads_dict[best_away_book]}, {a_prices_dict[best_away_book]})")
-        
-        
-        
-        if h_spreads_dict[best_home_book] > 0:
-            if h_prices_dict[best_home_book] > 0:
-                print(f"{home_team}: {best_home_book} (+{h_spreads_dict[best_home_book]}, +{h_prices_dict[best_home_book]})")
-            else:
-                print(f"{home_team}: {best_home_book} (+{h_spreads_dict[best_home_book]}, {h_prices_dict[best_home_book]})")
-        
-        elif h_spreads_dict[best_home_book] == 0:
-            if h_prices_dict[best_away_book] > 0:
-                print(f"{home_team}: {best_home_book} (PICK, +{h_prices_dict[best_home_book]})")
-            else:
-                print(f"{home_team}: {best_home_book} (PICK, {h_prices_dict[best_home_book]})")
-        
-        else:
-            if h_prices_dict[best_home_book] > 0:
-                print(f"{home_team}: {best_home_book} ({h_spreads_dict[best_home_book]}, +{h_prices_dict[best_home_book]})")
-            else:
-                print(f"{home_team}: {best_home_book} ({h_spreads_dict[best_home_book]}, {h_prices_dict[best_home_book]})")
-        
-        
+        print(f"{away_team}: {best_away_book} ({plus_sign(a_spreads_dict[best_away_book])}, {plus_sign(a_prices_dict[best_away_book])})")
+        print(f"{home_team}: {best_home_book} ({plus_sign(h_spreads_dict[best_home_book])}, {plus_sign(h_prices_dict[best_home_book])})")
+
+
         print("-----------")
 
     
