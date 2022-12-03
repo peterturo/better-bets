@@ -79,7 +79,7 @@ def generate_odds(SPORT_KEY = "upcoming"):
 
 
                 
-                print(f"SPORTSBOOK: {b['title']}")    
+                #print(f"Odds from {b['title']}")    
                 print("-----------")
 
 
