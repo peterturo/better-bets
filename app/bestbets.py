@@ -26,15 +26,25 @@ def plus_sign(number):
 
 def generate_arbitrage(SPORT_KEY = "upcoming"):
 
-    print(f"GENERATING {SPORT_KEY.upper()} ARBITRAGE BETS ...")
-    print("-----------")
-
     request_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?regions=us&markets=spreads&oddsFormat=american&apiKey={API_KEY}"
     response = requests.get(request_url)
 
     data = json.loads(response.text)
 
+    return data
+
+
+
+if __name__ == "__main__":   
+
+    SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
+
+    print(f"GENERATING {SPORT_KEY.upper()} ARBITRAGE BETS ...")
+    print("-----------")   
     
+    data = generate_arbitrage(SPORT_KEY)
+    
+
     for d in data:
         away_team = d["away_team"]
         home_team = d["home_team"]
@@ -109,6 +119,3 @@ def generate_arbitrage(SPORT_KEY = "upcoming"):
         
         except:
             break
-
-    
-generate_arbitrage()
