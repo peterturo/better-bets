@@ -58,3 +58,12 @@ Send email with arbitrage bets:
 ```sh
 python -m app.bestbets_email
 ```
+
+
+## Testing
+
+Run tests:
+
+```sh
+pytest
+```
