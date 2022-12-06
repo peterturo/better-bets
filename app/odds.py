@@ -4,19 +4,12 @@ import requests
 import json
 
 from app.alpha import API_KEY
-
-def plus_sign(number):
-    if number > 0:
-        return(f"+{number}")
-    elif number == 0:
-        return("EVEN")
-    else:
-        return(number)
+from app.bestbets import plus_sign
 
 
 def generate_odds(SPORT_KEY = "upcoming"):
 
-    WAGER_TYPE = (input("Please enter a type of wager (spreads, h2h, totals): "))
+    WAGER_TYPE = (input("Please input a wager type (spreads, h2h, totals) (default: 'spreads'): ") or "spreads")
 
     print(f"GENERATING ODDS FOR {SPORT_KEY.upper()}...")
     print("-----------")
