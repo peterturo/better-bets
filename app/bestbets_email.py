@@ -1,15 +1,18 @@
 from app.email_service import send_email
-from app.bestbets import generate_arbitrage, plus_sign, Convert
+from app.bestbets import fetch_odds, plus_sign, Convert
 
 if __name__ == "__main__":
 
     print("ARBITRAGE EMAIL...")
     SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
+    WAGER_TYPE="spreads" 
+    BOOK_KEY=""
+
 
     print(f"GENERATING {SPORT_KEY.upper()} ARBITRAGE BETS ...")
     print("-----------")   
 
-    data = generate_arbitrage(SPORT_KEY)
+    data = fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
 
     for d in data:
         away_team = d["away_team"]

@@ -4,29 +4,19 @@ import requests
 import json
 
 from app.alpha import API_KEY
-from app.bestbets import plus_sign
-
-
-def fetch_odds(SPORT_KEY, WAGER_TYPE):
-
-    request_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?regions=us&markets={WAGER_TYPE}&oddsFormat=american&apiKey={API_KEY}&bookmakers=bovada"
-
-    response = requests.get(request_url)
-
-    data = json.loads(response.text)
-
-    return data
+from app.bestbets import fetch_odds, plus_sign
 
 
 if __name__ == "__main__": 
 
     SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
     WAGER_TYPE = input("Please input a wager type (spreads, h2h, totals) (default: 'spreads'): ") or "spreads"
+    BOOK_KEY="&bookmakers=bovada"
 
     print(f"GENERATING {WAGER_TYPE.upper()} FOR {SPORT_KEY.upper()}...")
     print("-----------")
     
-    data = fetch_odds(SPORT_KEY, WAGER_TYPE)
+    data = fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
     
     for d in data:
         away_team = d["away_team"]

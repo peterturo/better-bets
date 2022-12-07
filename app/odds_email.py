@@ -7,11 +7,13 @@ if __name__ == "__main__":
     
     SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
     WAGER_TYPE = input("Please input a wager type (spreads, h2h, totals) (default: 'spreads'): ") or "spreads"
+    BOOK_KEY='&bookmakers=bovada'
+
 
     print(f"GENERATING {WAGER_TYPE.upper()} FOR {SPORT_KEY.upper()}...")
     print("-----------")
     
-    data = fetch_odds(SPORT_KEY, WAGER_TYPE)
+    data = fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
     
     for d in data:
         away_team = d["away_team"]
@@ -42,7 +44,7 @@ if __name__ == "__main__":
 
                     
                     html_content = f"""
-                    <h3>f"{sport_title.upper()} Bets</h3>
+                    <h3>{f"{sport_title.upper()}"} Bets</h3>
                     <p>{f"{sport_title}: {away_team} ({plus_sign(away_spread)}, {plus_sign(away_price)}) @ {home_team} ({plus_sign(home_spread)}, {plus_sign(home_price)})"} </p>
                     """
 
@@ -54,7 +56,7 @@ if __name__ == "__main__":
 
 
                     html_content = f"""
-                    <h3>f"{sport_title.upper()} Bets</h3>
+                    <h3>{f"{sport_title.upper()}"} Bets</h3>
                     <p>{f"{sport_title}: {away_team} @ {home_team}, O/U: {over}"} </p>
                     """
 
@@ -67,7 +69,7 @@ if __name__ == "__main__":
 
 
                     html_content = f"""
-                    <h3>f"{sport_title.upper()} Bets</h3>
+                    <h3>{f"{sport_title.upper()}"} Bets</h3>
                     <p>{f"{sport_title}: {away_team} ({plus_sign(away_ml)}) @ {home_team} ({plus_sign(home_ml)})"} </p>
                     """
 
