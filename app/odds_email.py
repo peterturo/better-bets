@@ -32,45 +32,38 @@ if __name__ == "__main__":
 
                 if WAGER_TYPE == "spreads":
 
-                    away_spreads = [p["point"] for p in odds if p["name"] == away_team]
-                    home_spreads = [p["point"] for p in odds if p["name"] == home_team]
-                    away_spread = away_spreads[0]
-                    home_spread = home_spreads[0]
+                    away_spread = [p["point"] for p in odds if p["name"] == away_team]
+                    home_spread = [p["point"] for p in odds if p["name"] == home_team]
 
-                    away_prices = [p["price"] for p in odds if p["name"] == away_team]
-                    home_prices = [p["price"] for p in odds if p["name"] == home_team]
-                    away_price = away_prices[0]
-                    home_price = home_prices[0]
+                    away_price = [p["price"] for p in odds if p["name"] == away_team]
+                    home_price = [p["price"] for p in odds if p["name"] == home_team]
 
                     
                     html_content = f"""
                     <h3>{f"{sport_title.upper()}"} Bets</h3>
-                    <p>{f"{sport_title}: {away_team} ({plus_sign(away_spread)}, {plus_sign(away_price)}) @ {home_team} ({plus_sign(home_spread)}, {plus_sign(home_price)})"} </p>
+                    <p>{f"{sport_title}: {away_team} ({plus_sign(away_spread[0])}, {plus_sign(away_price[0])}) @ {home_team} ({plus_sign(home_spread[0])}, {plus_sign(home_price[0])})"} </p>
                     """
 
 
                 elif WAGER_TYPE == "totals":
                     
-                    overs = [p["point"] for p in odds if p["name"] == "Over"]
-                    over = overs[0]
+                    over = [p["point"] for p in odds if p["name"] == "Over"]
 
 
                     html_content = f"""
                     <h3>{f"{sport_title.upper()}"} Bets</h3>
-                    <p>{f"{sport_title}: {away_team} @ {home_team}, O/U: {over}"} </p>
+                    <p>{f"{sport_title}: {away_team} @ {home_team}, O/U: {over[0]}"} </p>
                     """
 
                 else:
                     
-                    away_mls = [p["price"] for p in odds if p["name"] == away_team]
-                    home_mls = [p["price"] for p in odds if p["name"] == home_team]
-                    away_ml = away_mls[0]
-                    home_ml = home_mls[0]
+                    away_ml = [p["price"] for p in odds if p["name"] == away_team]
+                    home_ml = [p["price"] for p in odds if p["name"] == home_team]
 
 
                     html_content = f"""
                     <h3>{f"{sport_title.upper()}"} Bets</h3>
-                    <p>{f"{sport_title}: {away_team} ({plus_sign(away_ml)}) @ {home_team} ({plus_sign(home_ml)})"} </p>
+                    <p>{f"{sport_title}: {away_team} ({plus_sign(away_ml[0])}) @ {home_team} ({plus_sign(home_ml[0])})"} </p>
                     """
 
 

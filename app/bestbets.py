@@ -65,31 +65,24 @@ if __name__ == "__main__":
             for m in markets:
                 odds = m["outcomes"]
 
-                away_spreads = [p["point"] for p in odds if p["name"] == away_team]
-                home_spreads = [p["point"] for p in odds if p["name"] == home_team]
-                away_spread = away_spreads[0]
-                home_spread = home_spreads[0]
+                away_spread = [p["point"] for p in odds if p["name"] == away_team]
+                home_spread = [p["point"] for p in odds if p["name"] == home_team]
 
-                    
-                away_prices = [p["price"] for p in odds if p["name"] == away_team]
-                home_prices = [p["price"] for p in odds if p["name"] == home_team]
-                away_price = away_prices[0]
-                home_price = home_prices[0]
-
-                
-                
                 a_spreads.append(b["title"])
-                a_spreads.append(away_spread)
+                a_spreads.append(away_spread[0])
                     
                 h_spreads.append(b["title"])
-                h_spreads.append(home_spread)
-
+                h_spreads.append(home_spread[0])
+                
+                
+                away_price = [p["price"] for p in odds if p["name"] == away_team]
+                home_price = [p["price"] for p in odds if p["name"] == home_team]
                 
                 a_prices.append(b["title"])
-                a_prices.append(away_price)
+                a_prices.append(away_price[0])
                     
                 h_prices.append(b["title"])
-                h_prices.append(home_price)
+                h_prices.append(home_price[0])
                 
         
         
