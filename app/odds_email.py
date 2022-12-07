@@ -1,17 +1,14 @@
-# this is the "app/odds.py" file
-
-import requests
-import json
-
-from app.alpha import API_KEY
-from app.bestbets import fetch_odds, plus_sign
-
+from app.email_service import send_email
+from app.odds import fetch_odds, plus_sign
 
 if __name__ == "__main__": 
 
+    print("ODDS EMAIL...")
+    
     SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
     WAGER_TYPE = input("Please input a wager type (spreads, h2h, totals) (default: 'spreads'): ") or "spreads"
-    BOOK_KEY="&bookmakers=bovada"
+    BOOK_KEY='&bookmakers=bovada'
+
 
     print(f"GENERATING {WAGER_TYPE.upper()} FOR {SPORT_KEY.upper()}...")
     print("-----------")
@@ -45,10 +42,11 @@ if __name__ == "__main__":
                     away_price = away_prices[0]
                     home_price = home_prices[0]
 
-                     
                     
-                    print(f"{sport_title}: {away_team} ({plus_sign(away_spread)}, {plus_sign(away_price)}) @ {home_team} ({plus_sign(home_spread)}, {plus_sign(home_price)})")
-
+                    html_content = f"""
+                    <h3>{f"{sport_title.upper()}"} Bets</h3>
+                    <p>{f"{sport_title}: {away_team} ({plus_sign(away_spread)}, {plus_sign(away_price)}) @ {home_team} ({plus_sign(home_spread)}, {plus_sign(home_price)})"} </p>
+                    """
 
 
                 elif WAGER_TYPE == "totals":
@@ -56,7 +54,11 @@ if __name__ == "__main__":
                     overs = [p["point"] for p in odds if p["name"] == "Over"]
                     over = overs[0]
 
-                    print(f"{sport_title}: {away_team} @ {home_team}, O/U: {over}")
+
+                    html_content = f"""
+                    <h3>{f"{sport_title.upper()}"} Bets</h3>
+                    <p>{f"{sport_title}: {away_team} @ {home_team}, O/U: {over}"} </p>
+                    """
 
                 else:
                     
@@ -65,9 +67,14 @@ if __name__ == "__main__":
                     away_ml = away_mls[0]
                     home_ml = home_mls[0]
 
-                    print(f"{sport_title}: {away_team} ({plus_sign(away_ml)}) @ {home_team} ({plus_sign(home_ml)})")
+
+                    html_content = f"""
+                    <h3>{f"{sport_title.upper()}"} Bets</h3>
+                    <p>{f"{sport_title}: {away_team} ({plus_sign(away_ml)}) @ {home_team} ({plus_sign(home_ml)})"} </p>
+                    """
 
 
                 
-                #print(f"Odds from {b['title']}")    
-                print("-----------")
+                send_email(subject= f"{sport_title.upper()} Bets", html=html_content)
+
+                
