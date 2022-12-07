@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
 
             html_content = f"""
-                <h3>Arbitrage Bets</h3>
+                <h3>{f"{sport_title.upper()}"} Arbitrage Bets</h3>
                 <p>{f"{sport_title}: {away_team} @ {home_team}"} </p>
                 <p> </p>
                 <p>BEST BETS: </p>
@@ -83,7 +83,7 @@ if __name__ == "__main__":
             """
 
 
-            send_email(subject="Arbitrage Bets", html=html_content)
+            send_email(subject= f"{sport_title.upper()} Arbitrage Bets", html=html_content)
 
         except:
             break
