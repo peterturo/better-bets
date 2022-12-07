@@ -99,26 +99,26 @@ if __name__ == "__main__":
             # converting lists of bookmaker and spreads/prices into dictionary with key = bookmaker and value = spread/price
 
             
-            try:
-                best_away_book = (max(a_spreads_dict, key=a_spreads_dict.get))
-                best_home_book = (max(h_spreads_dict, key=h_spreads_dict.get))
-                # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary             
-                
-
-                
-                print(f"{sport_title}: {away_team} @ {home_team}")
-                print("")
-
-                print("BEST BETS:")
-                
-                print(f"{away_team}: {best_away_book} ({plus_sign(a_spreads_dict[best_away_book])}, {plus_sign(a_prices_dict[best_away_book])})")
-                print(f"{home_team}: {best_home_book} ({plus_sign(h_spreads_dict[best_home_book])}, {plus_sign(h_prices_dict[best_home_book])})")
-
-
-                print("-----------")
+            best_away_book = (max(a_spreads_dict, key=a_spreads_dict.get))
+            best_home_book = (max(h_spreads_dict, key=h_spreads_dict.get))
             
+            # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary             
+                
+
+                
+            print(f"{sport_title}: {away_team} @ {home_team}")
+            print("")
+
+            print("BEST BETS:")
+                
+            print(f"{away_team}: {best_away_book} ({plus_sign(a_spreads_dict[best_away_book])}, {plus_sign(a_prices_dict[best_away_book])})")
+            print(f"{home_team}: {best_home_book} ({plus_sign(h_spreads_dict[best_home_book])}, {plus_sign(h_prices_dict[best_home_book])})")
+
+
+            print("-----------")
             
-            except:
-                break
+    
+    
+    
     except:
         print ("Could not find betting data, please input a valid sport key.")
