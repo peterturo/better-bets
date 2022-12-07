@@ -1,5 +1,5 @@
 
-from app.bestbets import plus_sign, Convert, fetch_arbitrage
+from app.bestbets import plus_sign, Convert
 
 def test_plus_sign():
     assert plus_sign(-5) == -5
@@ -10,4 +10,3 @@ def test_plus_sign():
 def test_Convert():
     list = ['a', 1, 'b', 2, 'c', 3]
     assert Convert(list) == {'a':1, 'b':2, 'c':3}
-
