@@ -35,18 +35,16 @@ def fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY):
     return data
 
 
-if __name__ == "__main__":   
-
+def parse_data(sport_key, wager_type, book_key):
+    
     try:
 
-        SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
-        WAGER_TYPE="spreads" 
-        BOOK_KEY=""
-
-        print(f"GENERATING {SPORT_KEY.upper()} ARBITRAGE BETS ...")
+        print(f"GENERATING {sport_key.upper()} ARBITRAGE BETS ...")
         print("-----------")   
         
-        data = fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
+        data = fetch_odds(sport_key, wager_type, book_key)
+
+        games = []
         
 
         for d in data:
@@ -101,24 +99,59 @@ if __name__ == "__main__":
             
             best_away_book = (max(a_spreads_dict, key=a_spreads_dict.get))
             best_home_book = (max(h_spreads_dict, key=h_spreads_dict.get))
-            
+
+            best_a_spread = max(a_spreads_dict.values())
+            best_h_spread = max(h_spreads_dict.values())
+
+            best_a_price = a_prices_dict[best_away_book]
+            best_h_price = h_prices_dict[best_home_book]
+
             # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary             
                 
 
-                
-            print(f"{sport_title}: {away_team} @ {home_team}")
-            print("")
-
-            print("BEST BETS:")
-                
-            print(f"{away_team}: {best_away_book} ({plus_sign(a_spreads_dict[best_away_book])}, {plus_sign(a_prices_dict[best_away_book])})")
-            print(f"{home_team}: {best_home_book} ({plus_sign(h_spreads_dict[best_home_book])}, {plus_sign(h_prices_dict[best_home_book])})")
 
 
-            print("-----------")
-            
-    
-    
-    
+            game = {
+                "sport_title": sport_title,
+                "home_team": home_team,
+                "away_team": away_team,
+                "best_away_book": best_away_book, 
+                "best_home_book": best_home_book,
+                "best_a_spread": best_a_spread,
+                "best_h_spread": best_h_spread,
+                "best_a_price": best_a_price,
+                "best_h_price": best_h_price
+            }
+
+
+            games.append(game)
+
+        return games
+              
     except:
         print ("Could not find betting data, please input a valid sport key.")
+        return None
+
+
+
+
+if __name__ == "__main__":
+
+    SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
+    WAGER_TYPE="spreads" 
+    BOOK_KEY=""
+
+
+    games = parse_data(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
+
+    for g in games:
+        print (f"{g['sport_title']}: {g['away_team']} @ {g['home_team']}")
+        print ("")
+
+        print("BEST BETS:")
+
+        print (f"{g['away_team']}: {g['best_away_book']} ({plus_sign(g['best_a_spread'])}, {plus_sign(g['best_a_price'])}")
+        print (f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'])}, {plus_sign(g['best_h_price'])}")
+        
+        
+        print("-----------")
