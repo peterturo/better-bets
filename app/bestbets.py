@@ -22,6 +22,8 @@ def plus_sign(number):
     else:
         return(number)
 
+# function that inserts a '+' in front of a positive number and turns a 0 into 'PICK' (for odds notation).
+
 
 
 def fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY):
@@ -34,6 +36,9 @@ def fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY):
 
     return data
 
+# fetches data from The Odds API using user inputs/credentials
+# also converts json file into a python dictionary
+
 
 def parse_data(sport_key, wager_type, book_key):
     
@@ -44,6 +49,8 @@ def parse_data(sport_key, wager_type, book_key):
 
         games = []
         
+
+        # looping through datasets list of dictionaries, storing variables along the way
 
         for d in data:
             away_team = d["away_team"]
@@ -85,13 +92,10 @@ def parse_data(sport_key, wager_type, book_key):
 
                     
                     #over = [p["point"] for p in odds if p["name"] == "Over"]
-#
                     #away_ml = [p["price"] for p in odds if p["name"] == away_team]
-#
                     #home_ml = [p["price"] for p in odds if p["name"] == home_team]
 
-                    # collecting bookmaker name, spread, and price for each game
-                    
+                    # collecting bookmaker names, spreads, and prices for each game
             
             
             a_spreads_dict = (Convert(a_spreads))
@@ -100,11 +104,13 @@ def parse_data(sport_key, wager_type, book_key):
             a_prices_dict = (Convert(a_prices))
             h_prices_dict = (Convert(h_prices))
 
-            # converting lists of bookmaker and spreads/prices into dictionary with key = bookmaker and value = spread/price
+            # converting lists of bookmaker and spreads/prices into dictionary with key = bookmaker and value = spread/price using Convert function
 
             
             best_away_book = max(a_spreads_dict, key=a_spreads_dict.get)
             best_home_book = max(h_spreads_dict, key=h_spreads_dict.get)
+
+            # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary
 
             best_a_spread = max(a_spreads_dict.values())
             best_h_spread = max(h_spreads_dict.values())
@@ -112,7 +118,7 @@ def parse_data(sport_key, wager_type, book_key):
             best_a_price = a_prices_dict[best_away_book]
             best_h_price = h_prices_dict[best_home_book]
 
-            # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary             
+            # variable assignment, collecting the best arbitrage spreads and matching them to their sportsbook and price
                 
 
 
@@ -133,6 +139,9 @@ def parse_data(sport_key, wager_type, book_key):
 
 
             games.append(game)
+
+            # creating dictionary of necessary variables collected throughout loop
+            # appending these variables to an empty list
 
         return games
               
@@ -165,3 +174,5 @@ if __name__ == "__main__":
         print (f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'])}, {plus_sign(g['best_h_price'])})")
         
         print("-----------")
+
+    # looping through and printing arbitrage data in the main loop

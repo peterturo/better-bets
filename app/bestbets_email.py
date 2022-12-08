@@ -1,3 +1,7 @@
+# this is the "app/bestbets_email.py" file
+
+# sending email with arbitrage betting lines
+
 from app.email_service import send_email
 from app.bestbets import plus_sign, parse_data
 

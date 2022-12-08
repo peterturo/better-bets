@@ -1,5 +1,7 @@
 # this is the "app/alpha.py" file
 
+# import secret credentials from .env file
+
 import os
 from dotenv import load_dotenv
 

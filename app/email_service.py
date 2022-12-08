@@ -1,5 +1,8 @@
 # app/email_service.py
 
+# from unemployment repository completed in class
+# https://github.com/s2t2/unemployment-inclass-2022
+
 import os
 from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
