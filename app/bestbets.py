@@ -97,8 +97,8 @@ def parse_data(sport_key, wager_type, book_key):
             # converting lists of bookmaker and spreads/prices into dictionary with key = bookmaker and value = spread/price
 
             
-            best_away_book = (max(a_spreads_dict, key=a_spreads_dict.get))
-            best_home_book = (max(h_spreads_dict, key=h_spreads_dict.get))
+            best_away_book = max(a_spreads_dict, key=a_spreads_dict.get)
+            best_home_book = max(h_spreads_dict, key=h_spreads_dict.get)
 
             best_a_spread = max(a_spreads_dict.values())
             best_h_spread = max(h_spreads_dict.values())
