@@ -38,9 +38,7 @@ def fetch_odds(SPORT_KEY, WAGER_TYPE, BOOK_KEY):
 def parse_data(sport_key, wager_type, book_key):
     
     try:
-
-        print(f"GENERATING {sport_key.upper()} ARBITRAGE BETS ...")
-        print("-----------")   
+   
         
         data = fetch_odds(sport_key, wager_type, book_key)
 
@@ -68,6 +66,7 @@ def parse_data(sport_key, wager_type, book_key):
                     away_spread = [p["point"] for p in odds if p["name"] == away_team]
                     home_spread = [p["point"] for p in odds if p["name"] == home_team]
 
+
                     a_spreads.append(b["title"])
                     a_spreads.append(away_spread[0])
                         
@@ -83,6 +82,13 @@ def parse_data(sport_key, wager_type, book_key):
                         
                     h_prices.append(b["title"])
                     h_prices.append(home_price[0])
+
+                    
+                    #over = [p["point"] for p in odds if p["name"] == "Over"]
+#
+                    #away_ml = [p["price"] for p in odds if p["name"] == away_team]
+#
+                    #home_ml = [p["price"] for p in odds if p["name"] == home_team]
 
                     # collecting bookmaker name, spread, and price for each game
                     
@@ -120,7 +126,9 @@ def parse_data(sport_key, wager_type, book_key):
                 "best_a_spread": best_a_spread,
                 "best_h_spread": best_h_spread,
                 "best_a_price": best_a_price,
-                "best_h_price": best_h_price
+                "best_h_price": best_h_price,
+                "away_spread": away_spread,
+                "home_spread": home_spread,
             }
 
 
@@ -138,20 +146,22 @@ def parse_data(sport_key, wager_type, book_key):
 if __name__ == "__main__":
 
     SPORT_KEY = input("Please input a sport (default: 'americanfootball_nfl'): ") or "americanfootball_nfl"
-    WAGER_TYPE="spreads" 
-    BOOK_KEY=""
+    WAGER_TYPE= "spreads"
+    BOOK_KEY = ""
+
+    print(f"GENERATING ARBITRAGE BETS FOR {SPORT_KEY.upper()}...")
+    print("-----------")
 
 
     games = parse_data(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
 
     for g in games:
-        print (f"{g['sport_title']}: {g['away_team']} @ {g['home_team']}")
+        print (f"{g['sport_title']}: {g['away_team']} ({plus_sign(g['away_spread'][0])}) @ {g['home_team']} ({plus_sign(g['home_spread'][0])})")
         print ("")
 
         print("BEST BETS:")
 
-        print (f"{g['away_team']}: {g['best_away_book']} ({plus_sign(g['best_a_spread'])}, {plus_sign(g['best_a_price'])}")
-        print (f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'])}, {plus_sign(g['best_h_price'])}")
-        
+        print (f"{g['away_team']}: {g['best_away_book']} ({plus_sign(g['best_a_spread'])}, {plus_sign(g['best_a_price'])})")
+        print (f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'])}, {plus_sign(g['best_h_price'])})")
         
         print("-----------")
