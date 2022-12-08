@@ -12,7 +12,7 @@ def bestbets_dashboard():
     print("ARBITRAGE DASHBOARD...")
 
     try:
-        games = parse_data()
+        games = parse_data(sport_key="americanfootball_nfl", wager_type="spreads", book_key="")
         for g in games:
             sport_title = g["sport_title"]
             away_team = g["away_team"]
