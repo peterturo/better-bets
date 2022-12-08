@@ -2,6 +2,7 @@
 
 import requests
 import json
+from operator import itemgetter
 
 from app.alpha import API_KEY
 
@@ -58,11 +59,8 @@ def parse_data(sport_key, wager_type, book_key):
             bookmakers = d["bookmakers"]
             sport_title = d["sport_title"]
         
-            a_spreads = []
-            h_spreads = []
-
-            a_prices = []
-            h_prices = []
+            away_dicts = []
+            home_dicts = []
 
             for b in bookmakers:
                 markets = b["markets"]
@@ -72,24 +70,29 @@ def parse_data(sport_key, wager_type, book_key):
 
                     away_spread = [p["point"] for p in odds if p["name"] == away_team]
                     home_spread = [p["point"] for p in odds if p["name"] == home_team]
-
-
-                    a_spreads.append(b["title"])
-                    a_spreads.append(away_spread[0])
-                        
-                    h_spreads.append(b["title"])
-                    h_spreads.append(home_spread[0])
                     
                     
                     away_price = [p["price"] for p in odds if p["name"] == away_team]
                     home_price = [p["price"] for p in odds if p["name"] == home_team]
                     
-                    a_prices.append(b["title"])
-                    a_prices.append(away_price[0])
-                        
-                    h_prices.append(b["title"])
-                    h_prices.append(home_price[0])
 
+                    away_dict = {
+                        "sportbook": b["title"],
+                        "spread": away_spread,
+                        "price": away_price
+                    }
+
+                    
+                    away_dicts.append(away_dict)
+
+                    
+                    home_dict = {
+                        "sportbook": b["title"],
+                        "spread": home_spread,
+                        "price": home_price
+                    }
+
+                    home_dicts.append(home_dict)
                     
                     #over = [p["point"] for p in odds if p["name"] == "Over"]
                     #away_ml = [p["price"] for p in odds if p["name"] == away_team]
@@ -98,27 +101,25 @@ def parse_data(sport_key, wager_type, book_key):
                     # collecting bookmaker names, spreads, and prices for each game
             
             
-            a_spreads_dict = (Convert(a_spreads))
-            h_spreads_dict = (Convert(h_spreads))
-            
-            a_prices_dict = (Convert(a_prices))
-            h_prices_dict = (Convert(h_prices))
+            sorted_away_dicts = sorted(away_dicts, key=itemgetter("spread", "price"), reverse=True)
+            sorted_home_dicts = sorted(home_dicts, key=itemgetter("spread", "price"), reverse=True)
 
-            # converting lists of bookmaker and spreads/prices into dictionary with key = bookmaker and value = spread/price using Convert function
+            #print(sorted_away_dicts)
+            #print(sorted_home_dicts)
 
-            
-            best_away_book = max(a_spreads_dict, key=a_spreads_dict.get)
-            best_home_book = max(h_spreads_dict, key=h_spreads_dict.get)
 
-            # from: https://stackoverflow.com/questions/3282823/get-the-key-corresponding-to-the-minimum-value-within-a-dictionary
 
-            best_a_spread = max(a_spreads_dict.values())
-            best_h_spread = max(h_spreads_dict.values())
+            away_artbitrage = (sorted_away_dicts[0])
+            home_arbitrage = (sorted_home_dicts[0])
 
-            best_a_price = a_prices_dict[best_away_book]
-            best_h_price = h_prices_dict[best_home_book]
+            best_away_book = away_artbitrage["sportsbook"]
+            best_home_book = home_arbitrage["sportsbook"]
 
-            # variable assignment, collecting the best arbitrage spreads and matching them to their sportsbook and price
+            best_a_spread = away_artbitrage["spread"]
+            best_h_spread = home_arbitrage["spread"]
+
+            best_a_price = away_artbitrage["price"]
+            best_h_price = home_arbitrage ["price"]
                 
 
 
