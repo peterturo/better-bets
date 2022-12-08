@@ -1,4 +1,5 @@
 # this is the "web_app/routes/bestbets_routes.py" file ...
+# from https://github.com/s2t2/unemployment-inclass-2022
 
 from flask import Blueprint, request, render_template, redirect, flash
 
@@ -61,7 +62,7 @@ def bestbets_dashboard():
     except Exception as err:
         print('OOPS', err)
 
-        flash("Betting Data Error. Please check your sport and wager and try again!", "danger")
+        flash("Betting Data Error. There are currently no available bets for your selected sport!", "danger")
         return redirect("/bestbets/form")
 
 #

@@ -10,7 +10,16 @@
     <form action="/bestbets/dashboard" method="POST">
 
         <label>Sport:</label>
-        <input type="text" name="sport_key" placeholder="americanfootball_nfl" value="americanfootball_nfl">
+        <select name="sport_key">
+            <option value="americanfootball_nfl">NFL</option>
+            <option value="americanfootball_ncaaf">NCAAF</option>
+            <option value="basketball_nba">NBA</option>
+            <option value="basketball_ncaab">NCAAB</option>
+            <option value="soccer_fifa_world_cup">WORLD CUP</option>
+            <option value="icehockey_nhl">NHL</option>
+            <option value="baseball_mlb">MLB</option>
+            <option value="upcoming">UPCOMING</option>
+        </select>
         <br>
 
         <button class="btn btn-success">Submit</button>
