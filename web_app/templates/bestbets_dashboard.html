@@ -6,12 +6,12 @@
     <h2>Arbitrage Dashboard ({{ sport_title }})</h2>
 
     <h4>{{ sport_title }}: {{ away_team }} ({{ away_spread }}) @ {{ home_team }} ({{ home_spread }})</h4>
+    <h4>--------------------------</h4>
     
     <p class="lead">BEST BETS:</p>
     <p class="lead">{{ away_team }}: {{ best_away_book }} ({{ best_a_spread }}, {{ best_a_price }})</p>
     <p class="lead">{{ home_team }}: {{ best_home_book }} ({{ best_h_spread }}, {{ best_h_price }})</p>
     
-    <div id="chart-container" height="700px"></div>
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="text/javascript">
