@@ -1,0 +1,27 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "home" %}
+
+{% block content %}
+
+    <h1>Better Bets</h1>
+
+    <p>Start beating the books.</p>
+
+    <!-- SEE: https://getbootstrap.com/docs/5.2/components/carousel/ -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://wegrynenterprises.com/wp-content/uploads/2022/07/sports-betting-1000x499-1.jpeg" class="d-block w-100" alt="...">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://wpr-public.s3.amazonaws.com/wprorg/styles/facebook/s3/field/image/ap20296067506098.jpg?itok=hZu82HBq" class="d-block w-100" alt="...">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://calbizjournal.com/wp-content/uploads/2022/08/image-from-ios.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
