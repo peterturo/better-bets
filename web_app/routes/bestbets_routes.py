@@ -38,10 +38,10 @@ def bestbets_dashboard():
             home_spread = plus_sign(g["home_spread"][0])
             best_away_book = g["best_away_book"]
             best_home_book = g["best_home_book"]
-            best_a_spread = plus_sign(g["best_a_spread"])
-            best_h_spread = plus_sign(g["best_h_spread"])
-            best_a_price = plus_sign(g["best_a_price"])
-            best_h_price = plus_sign(g["best_h_price"])
+            best_a_spread = plus_sign(g["best_a_spread"][0])
+            best_h_spread = plus_sign(g["best_h_spread"][0])
+            best_a_price = plus_sign(g["best_a_price"][0])
+            best_h_price = plus_sign(g["best_h_price"][0])
 
 
         flash("Fetched Latest Betting Data!", "success")

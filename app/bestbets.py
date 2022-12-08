@@ -77,7 +77,7 @@ def parse_data(sport_key, wager_type, book_key):
                     
 
                     away_dict = {
-                        "sportbook": b["title"],
+                        "sportsbook": b["title"],
                         "spread": away_spread,
                         "price": away_price
                     }
@@ -87,7 +87,7 @@ def parse_data(sport_key, wager_type, book_key):
 
                     
                     home_dict = {
-                        "sportbook": b["title"],
+                        "sportsbook": b["title"],
                         "spread": home_spread,
                         "price": home_price
                     }
@@ -171,8 +171,8 @@ if __name__ == "__main__":
 
         print("BEST BETS:")
 
-        print (f"{g['away_team']}: {g['best_away_book']} ({plus_sign(g['best_a_spread'])}, {plus_sign(g['best_a_price'])})")
-        print (f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'])}, {plus_sign(g['best_h_price'])})")
+        print (f"{g['away_team']}: {g['best_away_book']} ({plus_sign(g['best_a_spread'][0])}, {plus_sign(g['best_a_price'][0])})")
+        print (f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'][0])}, {plus_sign(g['best_h_price'][0])})")
         
         print("-----------")
 
