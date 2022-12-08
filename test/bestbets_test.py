@@ -16,8 +16,7 @@ def test_parse_data():
     
     games = parse_data(sport_key = "americanfootball_nfl", wager_type = "spreads", book_key = "" )
     
-    games = games
-    assert isinstance (games, list)
+    #assert isinstance (games, list)
     
     for g in games:
 
