@@ -67,6 +67,15 @@ python -m app.bestbets_email
 ```
 
 
+### Local Web App
+
+Run the Web App from the CI (view at http://localhost:5000/)
+
+```sh
+FLASK_APP=web_app flask run
+```
+
+
 ## Testing
 
 Run tests:

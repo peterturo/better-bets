@@ -32,7 +32,7 @@ def bestbets_dashboard():
         for g in games:
             sport_title = g["sport_title"]
             away_team = g["away_team"]
-            home_team = g["away_team"]
+            home_team = g["home_team"]
             away_spread = plus_sign(g["away_spread"][0])
             home_spread = plus_sign(g["home_spread"][0])
             best_away_book = g["best_away_book"]
