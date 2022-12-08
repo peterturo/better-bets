@@ -99,15 +99,12 @@ def parse_data(sport_key, wager_type, book_key):
                     #home_ml = [p["price"] for p in odds if p["name"] == home_team]
 
                     # collecting bookmaker names, spreads, and prices for each game
+                    # putting them in a dictionary
+                    # appending them to an empty list
             
             
             sorted_away_dicts = sorted(away_dicts, key=itemgetter("spread", "price"), reverse=True)
             sorted_home_dicts = sorted(home_dicts, key=itemgetter("spread", "price"), reverse=True)
-
-            #print(sorted_away_dicts)
-            #print(sorted_home_dicts)
-
-
 
             away_artbitrage = (sorted_away_dicts[0])
             home_arbitrage = (sorted_home_dicts[0])
@@ -120,7 +117,8 @@ def parse_data(sport_key, wager_type, book_key):
 
             best_a_price = away_artbitrage["price"]
             best_h_price = home_arbitrage ["price"]
-                
+            
+            # sorting dictionary by spread, and then price to get the best betting line for each team
 
 
 
