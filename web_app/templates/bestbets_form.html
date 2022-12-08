@@ -1,0 +1,19 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "bestbets_form" %}
+
+{% block content %}
+
+    <h2>Arbitrage Form</h2>
+
+    <p>Request some sports betting data...</p>
+
+    <form action="/bestbets/dashboard" method="POST">
+
+        <label>Sport:</label>
+        <input type="text" name="sport_key" placeholder="americanfootball_nfl" value="americanfootball_nfl">
+        <br>
+
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+{% endblock %}
