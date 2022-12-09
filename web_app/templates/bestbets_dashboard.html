@@ -11,7 +11,7 @@
         BOOTSTRAP TABLES
         https://getbootstrap.com/docs/5.0/content/tables/
     -->
-    <table class="table table-hover table-responsive caption-top">
+    <table class="table table-striped table-hover table-responsive caption-top">
         <caption>Betting Data</caption>
         <thead>
             <tr>
@@ -28,9 +28,9 @@
         -->
         {% for g in games %}
             <tr>
-                <td>{{ g["away_team"] }} ({{ g["away_spread"] }}) @ {{ g["home_team"] }} ({{ g["home_spread"] }})</td>
-                <td>{{ g["away_team"] }}: {{ g["best_away_book"] }} ({{ g["best_a_spread"] }}, {{ g["best_a_price"] }})</td>
-                <td>{{ g["home_team"] }}: {{ g["best_home_book"] }} ({{ g["best_h_spread"] }}, {{ g["best_h_price"] }})</td>
+                <td>{{ g["away_team"] }} ({{ g["away_spread"][0] }}) @ {{ g["home_team"] }} ({{ g["home_spread"][0] }})</td>
+                <td>{{ g["away_team"] }}: <strong>{{ g["best_away_book"] }} ({{ g["best_a_spread"][0] }}, {{ g["best_a_price"][0] }})</strong></td>
+                <td>{{ g["home_team"] }}: <strong>{{ g["best_home_book"] }} ({{ g["best_h_spread"][0] }}, {{ g["best_h_price"][0] }})</strong></td>
 
             </tr>
         {% endfor %}
