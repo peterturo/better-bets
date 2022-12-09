@@ -1,5 +1,5 @@
 
-from app.bestbets import plus_sign, parse_data
+from app.bestbets import plus_sign, fetch_odds, parse_data
 
 def test_plus_sign():
     assert plus_sign(-5) == -5
@@ -7,16 +7,16 @@ def test_plus_sign():
     assert plus_sign(0) == "PICK"
 
 
-#def test_fetch_odds():
-    #data = fetch_odds("americanfootball_nfl", "spreads", "")
-    #assert isinstance (data, list)
+def test_fetch_odds():
+    data = fetch_odds("americanfootball_nfl", "spreads", "")
+    assert isinstance (data, list)
 
 
 def test_parse_data():
 
     games = parse_data("americanfootball_nfl", "spreads", "")
 
-    #assert isinstance (games, list)
+    assert isinstance (games, list)
 
     for g in games: 
         title = g["sport_title"]
