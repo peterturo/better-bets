@@ -53,13 +53,6 @@ python -m app.bestbets
 
 ### Email Sending
 
-Send email with betting lines:
-
-```sh
-python -m app.odds_email
-```
-
-
 Send email with arbitrage lines:
 
 ```sh
