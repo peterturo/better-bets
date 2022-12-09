@@ -13,11 +13,8 @@ def test_fetch_odds():
 
 
 def test_parse_data():
-    SPORT_KEY = "americanfootball_nfl"
-    WAGER_TYPE= "spreads"
-    BOOK_KEY = ""
 
-    games = parse_data(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
+    games = parse_data(sport_key="americanfootball_nfl", wager_type="spreads", book_key="")
 
     assert isinstance (games, list)
 

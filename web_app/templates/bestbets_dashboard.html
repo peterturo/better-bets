@@ -29,8 +29,8 @@
         {% for g in games %}
             <tr>
                 <td>{{ g["away_team"] }} ({{ g["away_spread"][0] }}) @ {{ g["home_team"] }} ({{ g["home_spread"][0] }})</td>
-                <td>{{ g["away_team"] }}: <strong>{{ g["best_away_book"] }} ({{ g["best_a_spread"][0] }}, {{ g["best_a_price"][0] }})</strong></td>
-                <td>{{ g["home_team"] }}: <strong>{{ g["best_home_book"] }} ({{ g["best_h_spread"][0] }}, {{ g["best_h_price"][0] }})</strong></td>
+                <td><strong>{{ g["away_team"] }}: {{ g["best_away_book"] }} ({{ g["best_a_spread"][0] }}, {{ g["best_a_price"][0] }})</strong></td>
+                <td><strong>{{ g["home_team"] }}: {{ g["best_home_book"] }} ({{ g["best_h_spread"][0] }}, {{ g["best_h_price"][0] }})</strong></td>
 
             </tr>
         {% endfor %}
