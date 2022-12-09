@@ -4,14 +4,39 @@
 {% block content %}
 
     <h2>Arbitrage Dashboard ({{ sport_title }})</h2>
+    
+    <div id="chart-container" height="700px"></div>
 
-    <h4>{{ sport_title }}: {{ away_team }} ({{ away_spread }}) @ {{ home_team }} ({{ home_spread }})</h4>
-    <h4>--------------------------</h4>
+    <!--
+        BOOTSTRAP TABLES
+        https://getbootstrap.com/docs/5.0/content/tables/
+    -->
+    <table class="table table-striped table-hover table-responsive caption-top">
+        <caption>Betting Data</caption>
+        <thead>
+            <tr>
+                <th scope="col">Game</th>
+                <th scope="col">Away Arbitrage</th>
+                <th scope="col">Home Arbitrage</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <!--
+            JINJA FOR LOOP
+            https://jinja.palletsprojects.com/en/3.1.x/templates/
+        -->
+        {% for g in games %}
+            <tr>
+                <td>{{ g["away_team"] }} ({{ g["away_spread"][0] }}) @ {{ g["home_team"] }} ({{ g["home_spread"][0] }})</td>
+                <td>{{ g["away_team"] }}: <strong>{{ g["best_away_book"] }} ({{ g["best_a_spread"][0] }}, {{ g["best_a_price"][0] }})</strong></td>
+                <td>{{ g["home_team"] }}: <strong>{{ g["best_home_book"] }} ({{ g["best_h_spread"][0] }}, {{ g["best_h_price"][0] }})</strong></td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
     
-    <p class="lead">BEST BETS:</p>
-    <p class="lead">{{ away_team }}: {{ best_away_book }} ({{ best_a_spread }}, {{ best_a_price }})</p>
-    <p class="lead">{{ home_team }}: {{ best_home_book }} ({{ best_h_spread }}, {{ best_h_price }})</p>
-    
-    </script>
 
 {% endblock %}
