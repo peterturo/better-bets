@@ -8,13 +8,13 @@ def test_plus_sign():
 
 
 def test_fetch_odds():
-    data = fetch_odds(SPORT_KEY="americanfootball_nfl", WAGER_TYPE="spreads", BOOK_KEY="")
+    data = fetch_odds("americanfootball_nfl", "spreads", "")
     assert isinstance (data, list)
 
 
 def test_parse_data():
 
-    games = parse_data(sport_key="americanfootball_nfl", wager_type="spreads", book_key="")
+    games = parse_data("americanfootball_nfl", "spreads", "")
 
     assert isinstance (games, list)
 
