@@ -6,14 +6,6 @@ from operator import itemgetter
 
 from app.alpha import API_KEY
 
-def Convert(a):
-    it = iter(a)
-    res_dct = dict(zip(it, it))
-    return res_dct
-
-# converting list of values to dictionary with key value pairs
-# from: https://www.geeksforgeeks.org/python-convert-a-list-to-dictionary/
-
 
 def plus_sign(number):
     if number > 0:

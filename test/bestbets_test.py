@@ -7,11 +7,6 @@ def test_plus_sign():
     assert plus_sign(0) == "PICK"
 
 
-def test_Convert():
-    list = ['a', 1, 'b', 2, 'c', 3]
-    assert Convert(list) == {'a':1, 'b':2, 'c':3}
-
-
 #def test_parse_data():
 #    SPORT_KEY = "americanfootball_nfl"
 #    WAGER_TYPE= "spreads"
