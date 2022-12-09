@@ -32,32 +32,12 @@ def bestbets_dashboard():
     
         for g in games:
             sport_title = g["sport_title"]
-            away_team = g["away_team"]
-            home_team = g["home_team"]
-            away_spread = plus_sign(g["away_spread"][0])
-            home_spread = plus_sign(g["home_spread"][0])
-            best_away_book = g["best_away_book"]
-            best_home_book = g["best_home_book"]
-            best_a_spread = plus_sign(g["best_a_spread"][0])
-            best_h_spread = plus_sign(g["best_h_spread"][0])
-            best_a_price = plus_sign(g["best_a_price"][0])
-            best_h_price = plus_sign(g["best_h_price"][0])
 
 
         flash("Fetched Latest Betting Data!", "success")
         return render_template("bestbets_dashboard.html",
-            sport_key=sport_key,
             sport_title=sport_title,
-            away_team=away_team,
-            home_team=home_team,
-            away_spread=away_spread,
-            home_spread=home_spread,
-            best_away_book=best_away_book,
-            best_home_book=best_home_book,
-            best_a_spread=best_a_spread,
-            best_h_spread=best_h_spread,
-            best_a_price=best_a_price,
-            best_h_price=best_h_price
+            games=games
         )
     except Exception as err:
         print('OOPS', err)
