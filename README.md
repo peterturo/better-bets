@@ -53,7 +53,7 @@ python -m app.bestbets
 
 ### Local Web App
 
-Run the Web App from the CI (view at http://localhost:5000/)
+Run the Web App from the CI using Flask (view at http://localhost:5000/)
 
 ```sh
 FLASK_APP=web_app flask run
