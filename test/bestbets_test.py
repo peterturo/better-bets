@@ -27,7 +27,7 @@ def test_parse_data():
         assert isinstance (away_team, str)  
         
         best_a_spread = g["best_a_spread"][0]
-        assert isinstance (best_a_spread, float)
+        assert isinstance (best_a_spread, str)
 
 
 

@@ -3,7 +3,7 @@
 
 from flask import Blueprint, request, render_template, redirect, flash
 
-from app.bestbets import parse_data, plus_sign
+from app.bestbets import parse_data
 
 bestbets_routes = Blueprint("bestbets_routes", __name__)
 
