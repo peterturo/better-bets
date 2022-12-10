@@ -7,6 +7,9 @@ from app.alpha import API_KEY
 from app.bestbets import fetch_odds, plus_sign
 
 
+# printing betting odds data for spreads, h2h, and point totals
+
+
 if __name__ == "__main__": 
 
     try:

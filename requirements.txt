@@ -8,6 +8,8 @@ sendgrid==6.6.0
 flask # <--- ADD FOR WEB APP
 
 # the heroku server wants to use this package to run our web app
+# currently not applicable, no longer have access to free Heroku
+
 gunicorn
 
 

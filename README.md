@@ -51,15 +51,6 @@ python -m app.bestbets
 ```
 
 
-### Email Sending
-
-Send email with arbitrage lines:
-
-```sh
-python -m app.bestbets_email
-```
-
-
 ### Local Web App
 
 Run the Web App from the CI (view at http://localhost:5000/)

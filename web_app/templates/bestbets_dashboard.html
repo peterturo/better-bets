@@ -15,6 +15,7 @@
         <caption>Betting Data</caption>
         <thead>
             <tr>
+                <th scope="col">Date</th>
                 <th scope="col">Game</th>
                 <th scope="col">Away Arbitrage</th>
                 <th scope="col">Home Arbitrage</th>
@@ -28,6 +29,7 @@
         -->
         {% for g in games %}
             <tr>
+                <td>{{ g["start_time"] }}</td>
                 <td>{{ g["away_team"] }} ({{ g["away_spread"][0] }}) @ {{ g["home_team"] }} ({{ g["home_spread"][0] }})</td>
                 <td><strong>{{ g["away_team"] }}: {{ g["best_away_book"] }} ({{ g["best_a_spread"][0] }}, {{ g["best_a_price"][0] }})</strong></td>
                 <td><strong>{{ g["home_team"] }}: {{ g["best_home_book"] }} ({{ g["best_h_spread"][0] }}, {{ g["best_h_price"][0] }})</strong></td>
