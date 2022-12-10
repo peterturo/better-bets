@@ -62,7 +62,10 @@ def parse_data(sport_key, wager_type, book_key):
                     odds = m["outcomes"]
 
                     away_spread = [p["point"] for p in odds if p["name"] == away_team]
+                    #away_spread = [f'+{a_spread}' if a_spread > 0 else f'{a_spread}' for a_spread in away_spreads]
+
                     home_spread = [p["point"] for p in odds if p["name"] == home_team]
+                    #home_spread = [f'+{h_spread}' if h_spread > 0 else f'{h_spread}' for h_spread in home_spreads]
                     
                     
                     away_price = [p["price"] for p in odds if p["name"] == away_team]
@@ -102,11 +105,17 @@ def parse_data(sport_key, wager_type, book_key):
             best_away_book = away_artbitrage["sportsbook"]
             best_home_book = home_arbitrage["sportsbook"]
 
-            best_a_spread = away_artbitrage["spread"]
-            best_h_spread = home_arbitrage["spread"]
+            best_a_spreads = away_artbitrage["spread"]
+            best_a_spread = [f'+{ba_spread}' if ba_spread > 0 else f'{ba_spread}' for ba_spread in best_a_spreads]
 
-            best_a_price = away_artbitrage["price"]
-            best_h_price = home_arbitrage ["price"]
+            best_h_spreads = home_arbitrage["spread"]
+            best_h_spread = [f'+{bh_spread}' if bh_spread > 0 else f'{bh_spread}' for bh_spread in best_h_spreads]
+
+            best_a_prices = away_artbitrage["price"]
+            best_a_price = [f'+{ba_price}' if ba_price > 0 else f'{ba_price}' for ba_price in best_a_prices]
+
+            best_h_prices = home_arbitrage ["price"]
+            best_h_price = [f'+{bh_price}' if bh_price > 0 else f'{bh_price}' for bh_price in best_h_prices]
             
             # sorting dictionary by spread, and then price to get the best betting line for each team
 
@@ -160,8 +169,8 @@ if __name__ == "__main__":
 
         print("BEST BETS:")
 
-        print (f"{g['away_team']}: {g['best_away_book']} ({plus_sign(g['best_a_spread'][0])}, {plus_sign(g['best_a_price'][0])})")
-        print (f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'][0])}, {plus_sign(g['best_h_price'][0])})")
+        print (f"{g['away_team']}: {g['best_away_book']} ({g['best_a_spread'][0]}, {g['best_a_price'][0]})")
+        print (f"{g['home_team']}: {g['best_home_book']} ({g['best_h_spread'][0]}, {g['best_h_price'][0]})")
         
         print("-----------")
 
