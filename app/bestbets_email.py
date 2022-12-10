@@ -19,7 +19,8 @@ if __name__ == "__main__":
 
     games = parse_data(SPORT_KEY, WAGER_TYPE, BOOK_KEY)
 
-    #html_content = []
+    # pulling games data from bestbets file
+
 
     for g in games:
         html_content = f"""
@@ -31,6 +32,5 @@ if __name__ == "__main__":
         <p>{f"{g['home_team']}: {g['best_home_book']} ({plus_sign(g['best_h_spread'])}, {plus_sign(g['best_h_price'])}"} </p>
         """
 
-        #html_content.append[html_contents]
 
     send_email(subject= f"{SPORT_KEY.upper()} Arbitrage Bets", html=html_content)

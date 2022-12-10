@@ -50,6 +50,7 @@ def parse_data(sport_key, wager_type, book_key):
             home_team = d["home_team"]
             bookmakers = d["bookmakers"]
             sport_title = d["sport_title"]
+            start_time = d["commence_time"][0:10]
         
             away_dicts = []
             home_dicts = []
@@ -86,9 +87,6 @@ def parse_data(sport_key, wager_type, book_key):
 
                     home_dicts.append(home_dict)
                     
-                    #over = [p["point"] for p in odds if p["name"] == "Over"]
-                    #away_ml = [p["price"] for p in odds if p["name"] == away_team]
-                    #home_ml = [p["price"] for p in odds if p["name"] == home_team]
 
                     # collecting bookmaker names, spreads, and prices for each game
                     # putting them in a dictionary
@@ -126,6 +124,7 @@ def parse_data(sport_key, wager_type, book_key):
                 "best_h_price": best_h_price,
                 "away_spread": away_spread,
                 "home_spread": home_spread,
+                "start_time": start_time
             }
 
 
